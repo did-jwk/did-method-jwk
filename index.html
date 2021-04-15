@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <script src='https://www.w3.org/Tools/respec/respec-w3c' async class='remove'></script>
+    <script class='remove'>
+      // All config options at https://respec.org/docs/
+      var respecConfig = {
+        // Working Groups ids at https://respec.org/w3c/groups/
+        group: "webapps", 
+        specStatus: "unofficial",
+        editors: [{
+          name: "David Chadwick",
+          url: "https://verifiablecredentials.info",
+        },{
+          name: "Nikos Fotiou",
+          url: "https://mm.aueb.gr",
+        }],
+        github: {
+          branch: "main",
+          repoURL: "did-jwk/did-method-jwk", 
+        },
+        // See https://respec.org/docs/#xref for usage.
+        xref: "web-platform",
+      };
+    </script>
+  </head>
+  <body>
+    <h1 id="title">did:jwk Method Specification</h1>
+    <section id='abstract'>
+      <p>
+        This DID method specifies a non-registry approach for representing JSON
+        Web Keys [[JWK]] as DID identifiers. 
+      </p>
+    </section>
+    <section id='sotd'>
+
+    </section>
+    <section class="informative">
+      <h2>Introduction</h2>
+      <p>
+      JSON Web Keys [[JWK]] is a popular data structure for representing
+      cryptographic keys using JavaScript Object Notation (JSON) [[JSON]].
+      The <tt>did:jwk</tt> method can be used for represting JWK-encoded
+      public keys as Decentralized Identifiers (DIDs) [[DID-CORE]]
+      </p>
+    </section>
+    <section class="normative">
+        <h2 id="format">The did:jwk Format</h2>
+        <p>
+            The format for the <tt>did:jwk</tt> method consists of the 
+            <code>did:jwk</code> prefix, followed by the base64url [[rfc4648]] 
+            encoded representation of the JWK public key according to [[JWK]].  
+        </p>
+    </section>
+    <section class="informative">
+        <h2>Examples</h2>
+        <section class="informative">
+            <h3>Ed25519</h3>
+            <p>
+                An example of an Ed25519 public key encoded in JWK is:
+            </p>    
+            <pre class="example" >
+            {
+                "kty": "OKP",
+                "crv": "Ed25519",
+                "x": "lwIUhDZMC4bnohWh1rFAsMrS1V6k-fu0ck1uoUge8EQ"
+            }
+            </pre>      
+            <p>
+                The representation of this key using <tt>did:jwk</tt> is:
+            </p>
+            <pre class="example">
+                did:jwk:ewogICJrdHkiOiAiT0tQIiwKICAiY3J2IjogIkVkMjU1MTkiLAogICJ4IjogImx3SVVoRFpNQzRibm9oV2gxckZBc01yUzFWNmstZnUwY2sxdW9VZ2U4RVEiCn0
+            </pre>
+        </section>
+        <section class="informative">
+            <h3>RSA 2048</h3>
+            <p>
+                An example of a 2048-bits RSA key in JWK is:
+            </p>    
+            <pre class="example" >
+                {
+                    "kty": "RSA",
+                    "n": "s3ceY4clnptBK6ssvrEzqpRBjypg9oelJJlZWW69sjLvG00EUK1hRtNE2tmsoty69gzwW1izyzFxG5HdkR6T3CKYGxHbyZ16PWU1DEIQgsljNd_5uAJocENVnpwNcLau8Ls_1Mp3va6chb_aAAHXysgmdDBZprwnBNylOX4zH4yN1yfmsonAdmfRAYu9YamiXkXxCNY0HSc5zFXVyWxqBkc6BiRRPbSw92DzdBRc25sezwfzw8pdefjL2h7D-mn9lKgJovVfi_gh_eMZwXwS5oJjJiwjkKQrrnxZYYVA9UF0Mk4kEnWls5PVnwfhd6w8EY-55Y6NpqDKrsaUj7NosQ",
+                    "e": "AQAB"
+                  }
+            </pre>      
+            <p>
+                The representation of this key using <tt>did:jwk</tt> is:
+            </p>
+            <pre class="example">
+                did:jwk:ewogICJrdHkiOiAiUlNBIiwKICAibiI6ICJzM2NlWTRjbG5wdEJLNnNzdnJFenFwUkJqeXBnOW9lbEpKbFpXVzY5c2pMdkcwMEVVSzFoUnRORTJ0bXNvdHk2OWd6d1cxaXp5ekZ4RzVIZGtSNlQzQ0tZR3hIYnlaMTZQV1UxREVJUWdzbGpOZF81dUFKb2NFTlZucHdOY0xhdThMc18xTXAzdmE2Y2hiX2FBQUhYeXNnbWREQlpwcnduQk55bE9YNHpINHlOMXlmbXNvbkFkbWZSQVl1OVlhbWlYa1h4Q05ZMEhTYzV6RlhWeVd4cUJrYzZCaVJSUGJTdzkyRHpkQlJjMjVzZXp3Znp3OHBkZWZqTDJoN0QtbW45bEtnSm92VmZpX2doX2VNWndYd1M1b0pqSml3amtLUXJybnhaWVlWQTlVRjBNazRrRW5XbHM1UFZud2ZoZDZ3OEVZLTU1WTZOcHFES3JzYVVqN05vc1EiLAogICJlIjogIkFRQUIiCn0
+            </pre>
+        </section>
+    </section>
+    <section id='conformance'>
+      <!-- This section is filled automatically by ReSpec. -->
+    </section>
+  </body>
+</html>
